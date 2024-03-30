@@ -13,7 +13,8 @@ export default function Users() {
   const [users, setUsers] = useState([]);
   const [submitted, setSubmitted] = useState(false);
   const [isEdit,setIsEdit] = useState(false);
-  const [selectedUser,setSelectedUser] = selectedUser({});
+  const [selectedUser,setSelectedUser] = useState({});
+
 
   //GET
   const getUsers = () => {
@@ -67,6 +68,17 @@ export default function Users() {
       });
   }
 
+  //DELETE
+  const deleteUser = (data) => {
+    axios.post('http://localhost:3001/api/deleteuser', data)
+      .then(() => {
+        getUsers();
+      })
+      .catch(error => {
+        console.error("Axios Error : ", error);
+      });
+  }
+
   return (
     <Box
       sx={{
@@ -77,15 +89,19 @@ export default function Users() {
     >
       <UserForm 
           addUser={addUser}
+          updateUser={updateUser}
           submitted={submitted}
-          data={setSelectedUser}
+          data={selectedUser}
+          isEdit={isEdit}
       />
       <UsersTable 
         rows={users} 
-        selectedUser = {data=>{
+        selectedUser={data=>{
           setSelectedUser(data);
           setIsEdit(true);
         }}
+        deleteUser={data => window.confirm('Are You Sure?') && deleteUser(data)}
+         
       />
     </Box>
   );
