@@ -13,7 +13,7 @@ export default function Users() {
   const [users, setUsers] = useState([]);
   const [submitted, setSubmitted] = useState(false);
   const [isEdit,setIsEdit] = useState(false);
-  const [selectedUser,setSelectedUser] = selectedUser([]);
+  const [selectedUser,setSelectedUser] = selectedUser({});
 
   //GET
   const getUsers = () => {
@@ -78,11 +78,13 @@ export default function Users() {
       <UserForm 
           addUser={addUser}
           submitted={submitted}
+          data={setSelectedUser}
       />
       <UsersTable 
         rows={users} 
         selectedUser = {data=>{
-
+          setSelectedUser(data);
+          setIsEdit(true);
         }}
       />
     </Box>
