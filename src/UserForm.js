@@ -1,7 +1,7 @@
 import { Button, Grid, Input, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 
-const UserForm = ({addUser,submitted}) => {
+const UserForm = ({addUser,submitted, data, isEdit}) => {
 
     const [id, setId] = useState(0);
     const [name, setName] = useState('');
@@ -16,9 +16,9 @@ const UserForm = ({addUser,submitted}) => {
     useEffect(() => {
         if (data?.id && data.id!==0)
         setId(data.id);
-        setName(data.name);
+        setName(data.name)
         
-    }, [submitted]);
+    }, [data]);
 
     return(
         <Grid
@@ -96,7 +96,9 @@ const UserForm = ({addUser,submitted}) => {
                 }}
                 onClick={()=> addUser({id:id,name:name})}
             >
-                ADD
+                {
+                    isEdit? 'Update' : 'Add'
+                }
             </Button>
 
         </Grid>
