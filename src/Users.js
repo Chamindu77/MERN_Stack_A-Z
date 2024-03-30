@@ -59,9 +59,9 @@ export default function Users() {
     
     axios.post('http://localhost:3001/api/updateuser', payload)
       . then(() => {
-      getUsers();
-      setSubmitted(false);
-      isEdit(false);
+        getUsers();
+        setSubmitted(false);
+        isEdit(false);
       })
       .catch(error => {
         console.error("Axios Error : ", error);
@@ -100,7 +100,7 @@ export default function Users() {
           setSelectedUser(data);
           setIsEdit(true);
         }}
-        deleteUser={data => window.confirm('Are You Sure?') && deleteUser(data)}
+        deleteUser={data=> window.confirm('Are You Sure?') && deleteUser(data)}
          
       />
     </Box>

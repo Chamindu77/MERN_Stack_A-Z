@@ -43,7 +43,7 @@ const updateUser = (req,res,next) => {
 
 const deleteUser = (req,res,next) => {
    
-    const {id} = req.body.id;
+    const {id} = req.body;
     user.deleteOne({id:id})
         .then(response => {
             res.json({response})
