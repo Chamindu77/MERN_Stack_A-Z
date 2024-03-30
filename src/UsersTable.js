@@ -2,7 +2,7 @@ import { Button } from "@mui/base";
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 
 
-const UsersTable = ({rows}) =>{
+const UsersTable = ({rows, selectedUser}) =>{
     return(
     <TableContainer component={Paper}>
         <Table>
@@ -37,7 +37,7 @@ const UsersTable = ({rows}) =>{
                         </TableRow>
                     )):(
                         <TableRow sx={{'&:last-child td, &:last-child th':{boder:0}}}>
-                                                    <TableCell component='th' scope="row">No Data</TableCell>
+                            <TableCell component='th' scope="row">No Data</TableCell>
                         </TableRow>
                     )
                 }

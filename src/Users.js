@@ -13,6 +13,7 @@ export default function Users() {
   const [users, setUsers] = useState([]);
   const [submitted, setSubmitted] = useState(false);
   const [isEdit,setIsEdit] = useState(false);
+  const [selectedUser,setSelectedUser] = selectedUser([]);
 
   //GET
   const getUsers = () => {
@@ -78,7 +79,12 @@ export default function Users() {
           addUser={addUser}
           submitted={submitted}
       />
-      <UsersTable rows={users} />
+      <UsersTable 
+        rows={users} 
+        selectedUser = {data=>{
+
+        }}
+      />
     </Box>
   );
 }
