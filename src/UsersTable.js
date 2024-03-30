@@ -22,7 +22,7 @@ const UsersTable = ({rows, selectedUser}) =>{
                         <TableCell>
                             <Button
                                 sx={{margin: '0px 10px'}}
-                                onClick={()=>{}}
+                                onClick={()=> selectedUser({id: row.id, name: row.name})}
                             >
                                 Update
                             </Button>
