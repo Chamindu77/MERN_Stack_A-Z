@@ -12,6 +12,7 @@ export default function Users() {
 
   const [users, setUsers] = useState([]);
   const [submitted, setSubmitted] = useState(false);
+  const [isEdit,setIsEdit] = useState(false);
 
   //GET
   const getUsers = () => {
@@ -38,6 +39,7 @@ export default function Users() {
       .then(() => {
         getUsers();
         setSubmitted(false);
+        isEdit(false);
       })
       .catch (error => {
         console.error("Axios Error : ", error);
@@ -56,7 +58,8 @@ export default function Users() {
     axios.post('http://localhost:3001/api/updateuser', payload)
       . then(() => {
       getUsers();
-      setSubmitted(fale);
+      setSubmitted(false);
+      isEdit(false);
       })
       .catch(error => {
         console.error("Axios Error : ", error);
