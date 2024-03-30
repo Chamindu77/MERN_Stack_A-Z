@@ -13,20 +13,37 @@ app.use(
 
 app.use(express.json());
 
+
+//GET
 app.get('/users', (req, res) => {
-    controller.getUsers(users => {
-        res.send(users);
+    controller.getUsers((req,res,next) => {
+        res.send();
     });
 });
 
-
-app.get('/user',(req,res) => {
-    const id = req.query.id;
-    controller.getUsersById(id, user => {
-        res.send(user);
+//POST
+app.post('/createuser',(req,res) => {
+    controller.addUser(req.body,(callback) => {
+        res.send();
     });
 });
 
+//UPDATE
+app.post('/updateuser',(req,res) => {
+    controller.updateUser(req.body,(callback) => {
+        res.send(callback);
+    });
+
+    
+});
+
+//DELETE
+app.post('/updateuser',(req,res) => {
+    controller.deleteUser(req.body,(callback) => {
+        res.send(callback);
+    });
+
+});
 
 
 module.exports = app;
