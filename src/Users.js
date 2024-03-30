@@ -13,7 +13,7 @@ export default function Users() {
   const [users, setUsers] = useState([]);
   const [submitted, setSubmitted] = useState(false);
 
-
+  //GET
   const getUsers = () => {
     axios.get('http://localhost:3001/api/users')
       .then(response => {
@@ -24,6 +24,7 @@ export default function Users() {
       })
   }
 
+  //ADD
   const addUser = (data) =>{
     setSubmitted(true);
 
@@ -42,6 +43,26 @@ export default function Users() {
         console.error("Axios Error : ", error);
       });
   }
+
+  //UPDATE
+  const updateUser = (data) => {
+    setSubmitted(true);
+    
+    const payload = {
+      id: data.id,
+      name: data.name,
+    }
+    
+    axios.post('http://localhost:3001/api/updateuser', payload)
+      . then(() => {
+      getUsers();
+      setSubmitted(fale);
+      })
+      .catch(error => {
+        console.error("Axios Error : ", error);
+      });
+  }
+
   return (
     <Box
       sx={{
