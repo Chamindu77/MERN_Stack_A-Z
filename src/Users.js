@@ -52,6 +52,7 @@ export default function Users() {
     >
       <UserForm 
           addUser={addUser}
+          submitted={submitted}
       />
       <UsersTable rows={users} />
     </Box>
